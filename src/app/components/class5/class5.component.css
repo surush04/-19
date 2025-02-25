@@ -1,0 +1,137 @@
+/* Стили таблиса */
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Барои якҷоя кардани сарҳадҳо */
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Стили суроғаҳои таблиса */
+  th {
+    background-color: #24068d;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  /* Стили ҳуҷраҳои таблиса */
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+  }
+  
+  /* Ҳангоми хати мишр ё хунук шудани хати таблиса */
+
+  
+  /* Ҳангоми хости хати мишр бо хати ороишии торик */
+  tr {
+    background-color: #ddd;
+    border-bottom: 1px solid black;
+  }
+  
+  /* Адаптив барои экранҳои хурд (мобил) */
+ 
+  
+  .podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 10px;
+    text-align: center;
+    margin-top: 20px;
+    flex-wrap: wrap; /* Барои ҷойгир кардани унсурҳо дар ҳолати экранҳои хурд */
+  }
+  
+  .first-place, .second-place, .third-place {
+    width: 220px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+  }
+  
+  .first-place {
+    background-color: gold;
+    order: 1;
+    transform: translateY(-20px);
+  }
+  
+  .second-place {
+    background-color: silver;
+    order: 0;
+    transform: translateY(10px);
+  }
+  
+  .third-place {
+    background-color: #cd7f32;
+    order: 2;
+    transform: translateY(10px);
+  }
+  
+  .position {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .grade {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* Media queries барои танзими тарҳ дар экранҳои хурд (мобил ва планшет) */
+  @media (max-width: 768px) {
+    .podium {
+      flex-direction: column; /* Тақсимоти унсурҳо ба таври сутунӣ */
+      align-items: center; /* Ҳамаи унсурҳо ба маркази экран барои мобил */
+    }
+  
+    .first-place, .second-place, .third-place {
+      width: 90%;
+      margin: 10px 0; /* Фасл байни унсурҳо */
+    }
+  
+    .first-place {
+      transform: translateY(-10px);
+      order: 1; /* Шахс 1-ум аввал намоён шавад */
+    }
+  
+    .second-place {
+      transform: translateY(0);
+      order: 2; /* Шахс 2-юм дуюм бошад */
+    }
+  
+    .third-place {
+      transform: translateY(10px);
+      order: 3; /* Шахс 3-юм охирин бошад */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .position {
+      font-size: 16px;
+    }
+  
+    .grade {
+      font-size: 14px;
+    }
+  
+    .first-place, .second-place, .third-place {
+      width: 85%; /* Шудудтар кардани муҳтавои сутун */
+    }
+  }
+  
+  .oll{
+    background:linear-gradient(45deg,#2d5266, transparent) ;
+height: 100vh;
+
+
+
+
+
+  }

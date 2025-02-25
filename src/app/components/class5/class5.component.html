@@ -1,0 +1,43 @@
+<div class="oll">
+  <h2>Донишҷӯён аз класс 5</h2>
+  <div *ngIf="students?.length" class="podium">
+    <div class="second-place" *ngIf="getTopThreeStudents()?.[1]">
+      <span class="position">🥈 2</span>
+      <p>{{ getTopThreeStudents()[1]?.firstName }} {{ getTopThreeStudents()[1]?.lastName }}</p>
+      <p class="grade">{{ getTopThreeStudents()[1]?.grade }}%</p>
+    </div>
+  
+    <div class="first-place" *ngIf="getTopThreeStudents()?.[0]">
+      <span class="position">🥇 1</span>
+      <p>{{ getTopThreeStudents()[0]?.firstName }} {{ getTopThreeStudents()[0]?.lastName }}</p>
+      <p class="grade">{{ getTopThreeStudents()[0]?.grade }}%</p>
+    </div>
+  
+    <div class="third-place" *ngIf="getTopThreeStudents()?.[2]">
+      <span class="position">🥉 3</span>
+      <p>{{ getTopThreeStudents()[2]?.firstName }} {{ getTopThreeStudents()[2]?.lastName }}</p>
+      <p class="grade">{{ getTopThreeStudents()[2]?.grade }}%</p>
+    </div>
+  </div>
+  
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Номи аввал</th>
+        <th>Фамилия</th>
+        <th>Age</th>
+        <th>Статус</th>
+        <th>Бал</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.firstName }}</td>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.status }}</td>
+        <td>{{ student.grade }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

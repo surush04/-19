@@ -1,0 +1,14 @@
+<!-- src/app/adminclass5/adminclass5.component.html -->
+<div>
+    <h2>Илова кардани донишҷӯ</h2>
+    <form [formGroup]="studentForm" (ngSubmit)="addStudent()">
+      <input type="text" formControlName="firstName" placeholder="Ном" required />
+      <input type="text" formControlName="lastName" placeholder="Номи хонавода" required />
+      <input type="number" formControlName="age" placeholder="Сол" required />
+      <input type="text" formControlName="grade" placeholder="Нишон" required />
+      <input type="text" formControlName="status" placeholder="Вазъият" required />
+      <input type="text" formControlName="image" placeholder="Суроғаи тасвир" required />
+      <button type="submit" [disabled]="studentForm.invalid">Илова кардан</button>
+    </form>
+  </div>
+ 

@@ -29,7 +29,12 @@ export class Class5Component implements OnInit {
     this.students = [
       { firstName: 'Ali', lastName: 'Ahmadov', age: 12, grade: 95, status: 'active' },
       { firstName: 'Sara', lastName: 'Zafar', age: 10, grade: 88, status: 'inactive' },
-      { firstName: 'Jamil', lastName: 'Tursunov', age: 11, grade: 92, status: 'active' }
+      { firstName: 'Jamil', lastName: 'Tursunov', age: 11, grade: 92, status: 'active' },
+      { firstName: 'Salim', lastName: 'rfpolov', age: 11, grade: 93, status: 'active' },
+      { firstName: 'samad', lastName: 'jamolov', age: 11, grade: 92, status: 'active' },
+      { firstName: 'halim', lastName: 'nabot', age: 11, grade: 91, status: 'active' },
+      { firstName: 'daler', lastName: 'sssss', age: 11, grade: 92, status: 'active' },
+      { firstName: 'samad', lastName: 'jamolov', age: 11, grade: 92, status: 'active' },
     ];
     this.sortStudents(); // Сорт кардани донишҷӯён
   }

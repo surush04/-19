@@ -1,1 +1,17 @@
-<p>class6 works!</p>
+<div class="quiz-container">
+    <h2>Бозии саволҳо: Шумо бояд ҷавобҳои дурустро интихоб кунед!</h2>
+  
+    <div *ngIf="currentQuestionIndex < questions.length">
+      <p>{{ questions[currentQuestionIndex].question }}</p>
+      <div *ngFor="let option of questions[currentQuestionIndex].options">
+        <button (click)="checkAnswer(option)">{{ option }}</button>
+      </div>
+      <p>{{ resultMessage }}</p>
+    </div>
+  
+    <div *ngIf="currentQuestionIndex >= questions.length">
+      <p>{{ resultMessage }}</p>
+      <button (click)="restartGame()">Навсозӣ</button>
+    </div>
+  </div>
+  

@@ -1,5 +1,6 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-class6',
@@ -9,96 +10,59 @@ import { Component } from '@angular/core';
   styleUrl: './class6.component.css'
 })
 export class Class6Component {
-  questions: any[] = [
-    {
-      question: 'Кадом шохи дарахт дар Тоҷикистон бештар меафзояд?',
-      options: ['Борука', 'Зардолу', 'Сағанақ'],
-      answer: 'Зардолу'
-    },
-    {
-      question: 'Кадом ҳайвон бештар дар кӯҳистон зиндагӣ мекунад?',
-      options: ['Шир', 'Гӯсфанд', 'Ҳайвонҳои ҳавоии'],
-      answer: 'Гӯсфанд'
-    },
-    {
-      question: 'Вақти Олимпиада кай баргузор мешавад?',
-      options: ['Ҳар 4 сол', 'Ҳар 2 сол', 'Ҳар 6 сол'],
-      answer: 'Ҳар 4 сол'
-    },
-    {
-      question: 'Кадом кӯҳҳо дар Тоҷикистон баландтарин аст?',
-      options: ['Фанский', 'Памир', 'Алто'],
-      answer: 'Памир'
-    },
-    {
-      question: 'Кадом мӯҳтавои хуби шахсиро ҳисобида мешавад?',
-      options: ['Зудкорӣ', 'Тарзи ҳаёти солим', 'Тамокукашӣ'],
-      answer: 'Тарзи ҳаёти солим'
-    },
-    {
-      question: 'Кадом кас меравад дар бахши аниматсия кор кунад?',
-      options: ['Сиёсатшинос', 'Механик', 'Аниматор'],
-      answer: 'Аниматор'
-    },
-    {
-      question: 'Кадом ҳайвони хушбӯй аст?',
-      options: ['Шерх', 'Гул', 'Шутурмурғ'],
-      answer: 'Гул'
-    },
-    // Саволҳои математика
-    {
-      question: '1 + 1 чӣ аст?',
-      options: ['2', '3', '4'],
-      answer: '2'
-    },
-    {
-      question: '10 * 5 чӣ медиҳад?',
-      options: ['50', '100', '10'],
-      answer: '50'
-    },
-    {
-      question: '100 / 25 чӣ аст?',
-      options: ['2', '4', '5'],
-      answer: '4'
-    },
-    {
-      question: '25 + 75 чӣ аст?',
-      options: ['100', '110', '120'],
-      answer: '100'
-    },
-    {
-      question: 'Каҷ кардани радиуси 3 ба муодилаи паём медиҳад?',
-      options: ['9', '6', '12'],
-      answer: '9'
+ students: any[] = []; // Массиви ёддошти донишҷӯён
+  studentForm: FormGroup;
+
+  constructor() {
+    // Иҷоди формаи шенасоии донишҷӯ
+    this.studentForm = new FormGroup({
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+      age: new FormControl('', [Validators.required, Validators.min(5)]),
+      grade: new FormControl('', Validators.required),
+      status: new FormControl('', Validators.required)
+    });
+  }
+
+  ngOnInit(): void {
+    // Маълумот ба таври статикӣ
+    this.students = [
+      { firstName: 'Ali', lastName: 'Ahmadov', age:10,grade: 95, status: 'active' },
+      { firstName: 'Sara', lastName: 'Zafar', age: 10, grade: 88, status: 'inactive' },
+      { firstName: 'Jamil', lastName: 'Tursu', age: 11, grade: 92, status: 'active' },
+      { firstName: 'Salim', lastName: 'fpolov', age: 11, grade: 93, status: 'active' },
+      { firstName: 'samad', lastName: 'jamolov', age: 11, grade: 92, status: 'active' },
+      { firstName: 'halim', lastName: 'nabot', age: 11, grade: 91, status: 'active' },
+      { firstName: 'daler', lastName: 'sssss', age: 11, grade: 92, status: 'active' },
+      { firstName: 'samad', lastName: 'jamolov', age: 11, grade: 92, status: 'active' },
+    ];
+    this.sortStudents(); // Сорт кардани донишҷӯён
+  }
+
+  sortStudents() {
+    if (!this.students || !this.students.length) {
+      console.warn("Массиви students холӣ аст!");
+      return;
     }
-  ];
+    this.students.sort((a, b) => b.grade - a.grade); // Ба тартиби камшавӣ сорт мекунад
+  }
 
-  currentQuestionIndex: number = 0;
-  userAnswer: string = '';
-  resultMessage: string = '';
-  correctAnswers: number = 0;
-  incorrectAnswers: number = 0;
-
-  checkAnswer(selectedOption: string): void {
-    if (selectedOption === this.questions[this.currentQuestionIndex].answer) {
-      this.resultMessage = 'Ҷавоб дуруст аст! Ба саволи баъдӣ рафта метавонед.';
-      this.correctAnswers++;
-    } else {
-      this.resultMessage = 'Ҷавоб нодуруст аст! Бозӣ ба охир расид.';
-      this.incorrectAnswers++;
-    }
-
-    this.currentQuestionIndex++;
-    
-    if (this.currentQuestionIndex >= this.questions.length) {
-      this.resultMessage = `Шумо бозӣ ба охир расидед! Дуруст: ${this.correctAnswers}, Нодуруст: ${this.incorrectAnswers}`;
+  addStudent(): void {
+    if (this.studentForm.valid) {
+      const newStudent = this.studentForm.value;
+      this.students.push(newStudent); // Ворид кардани донишҷӯи нав ба массив
+      this.sortStudents(); // Сорт кардани донишҷӯён
+      this.studentForm.reset(); // Тоза кардани форма
     }
   }
 
-  restartGame(): void {
-    this.currentQuestionIndex = 0;
-    this.correctAnswers = 0;
-    this.incorrectAnswers = 0;
-    this.resultMessage = '';
+  getTopThreeStudents(): any[] {
+    if (!this.students?.length) {
+      return [];
+    }
+
+    return [...this.students]
+      .sort((a, b) => Number(b.grade) - Number(a.grade)) // Ба тартиби камшавӣ сорт мекунад
+      .slice(0, 3); // Танҳо 3 хонандаро мегирад
   }
 }

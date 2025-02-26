@@ -1,22 +1,22 @@
-<div class="oll">
-  <h2>Донишҷӯён аз класс 5</h2>
+<div class="oll"><br>
+ 
   <div *ngIf="students?.length" class="podium">
     <div class="second-place" *ngIf="getTopThreeStudents()?.[1]">
-      <span class="position">🥈 2</span>
+      <span class="position"><img class="imgpod" src="" alt=""></span>
       <p>{{ getTopThreeStudents()[1]?.firstName }} {{ getTopThreeStudents()[1]?.lastName }}</p>
-      <p class="grade">{{ getTopThreeStudents()[1]?.grade }}%</p>
+      <p class="grade">{{ getTopThreeStudents()[1]?.grade }}</p>
     </div>
   
     <div class="first-place" *ngIf="getTopThreeStudents()?.[0]">
-      <span class="position">🥇 1</span>
+      <span class="position"><img class="imgpod"  src="" alt=""></span>
       <p>{{ getTopThreeStudents()[0]?.firstName }} {{ getTopThreeStudents()[0]?.lastName }}</p>
-      <p class="grade">{{ getTopThreeStudents()[0]?.grade }}%</p>
+      <p class="grade">{{ getTopThreeStudents()[0]?.grade }}</p>
     </div>
   
     <div class="third-place" *ngIf="getTopThreeStudents()?.[2]">
-      <span class="position">🥉 3</span>
+      <span class="position"><img class="imgpod" src="" alt=""></span>
       <p>{{ getTopThreeStudents()[2]?.firstName }} {{ getTopThreeStudents()[2]?.lastName }}</p>
-      <p class="grade">{{ getTopThreeStudents()[2]?.grade }}%</p>
+      <p class="grade">{{ getTopThreeStudents()[2]?.grade }}</p>
     </div>
   </div>
   

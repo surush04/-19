@@ -1,0 +1,109 @@
+/* Стили таблиса */
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Барои якҷоя кардани сарҳадҳо */
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Стили суроғаҳои таблиса */
+  th {
+    background-color: #24068d;
+    color: white;
+    padding: 10px;
+    text-align: left;
+    font-weight: bold;
+  }
+  
+  /* Стили ҳуҷраҳои таблиса */
+  td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #000000;
+  }
+  
+  /* Ҳангоми хати мишр ё хунук шудани хати таблиса */
+
+  
+  /* Ҳангоми хости хати мишр бо хати ороишии торик */
+  tr {
+    background-color: #ddd;
+    border-bottom: 1px solid black;
+  }
+  
+  /* Адаптив барои экранҳои хурд (мобил) */
+ 
+  
+  .podium {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 5px;
+    text-align: center;
+    margin-top: 50px;
+    flex-wrap: wrap; /* Барои ҷойгир кардани унсурҳо дар ҳолати экранҳои хурд */
+    color: white;
+  }
+  
+  .first-place, .second-place, .third-place {
+    width: 220px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 5px;
+  }
+  
+  .first-place {
+    background-color:#007c91;
+    order: 1;
+    transform: translateY(-30px);
+  }
+  
+  .second-place {
+    background-color: #007c91;
+    order: 0;
+    transform: translateY(10px);
+  }
+  
+  .third-place {
+    background-color: #007c91;
+    order: 2;
+    transform: translateY(10px);
+  }
+  
+  .position {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .grade {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  /* Media queries барои танзими тарҳ дар экранҳои хурд (мобил ва планшет) */
+
+  
+  @media (max-width: 480px) {
+    
+  
+    .first-place, .second-place, .third-place {
+      width: 20%; /* Шудудтар кардани муҳтавои сутун */
+    }
+  }
+  
+  .oll{
+    background:linear-gradient(to right, #4e4376, #2b5876) ;
+height: 100vh;
+
+  }
+  .imgpod{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: wheat;
+  }

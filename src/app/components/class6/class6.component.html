@@ -1,17 +1,43 @@
-<div class="quiz-container">
-    <h2>Бозии саволҳо: Шумо бояд ҷавобҳои дурустро интихоб кунед!</h2>
-  
-    <div *ngIf="currentQuestionIndex < questions.length">
-      <p>{{ questions[currentQuestionIndex].question }}</p>
-      <div *ngFor="let option of questions[currentQuestionIndex].options">
-        <button (click)="checkAnswer(option)">{{ option }}</button>
-      </div>
-      <p>{{ resultMessage }}</p>
+<div class="oll"><br>
+ 
+  <div *ngIf="students?.length" class="podium">
+    <div class="second-place" *ngIf="getTopThreeStudents()?.[1]">
+      <span class="position"><img class="imgpod" src="" alt=""></span>
+      <p>{{ getTopThreeStudents()[1]?.firstName }} {{ getTopThreeStudents()[1]?.lastName }}</p>
+      <p class="grade">{{ getTopThreeStudents()[1]?.grade }}</p>
     </div>
   
-    <div *ngIf="currentQuestionIndex >= questions.length">
-      <p>{{ resultMessage }}</p>
-      <button (click)="restartGame()">Навсозӣ</button>
+    <div class="first-place" *ngIf="getTopThreeStudents()?.[0]">
+      <span class="position"><img class="imgpod"  src="" alt=""></span>
+      <p>{{ getTopThreeStudents()[0]?.firstName }} {{ getTopThreeStudents()[0]?.lastName }}</p>
+      <p class="grade">{{ getTopThreeStudents()[0]?.grade }}</p>
+    </div>
+  
+    <div class="third-place" *ngIf="getTopThreeStudents()?.[2]">
+      <span class="position"><img class="imgpod" src="" alt=""></span>
+      <p>{{ getTopThreeStudents()[2]?.firstName }} {{ getTopThreeStudents()[2]?.lastName }}</p>
+      <p class="grade">{{ getTopThreeStudents()[2]?.grade }}</p>
     </div>
   </div>
   
+  <table border="1">
+    <thead>
+      <tr>
+        <th>Номи аввал</th>
+        <th>Фамилия</th>
+        <th>Age</th>
+        <th>Статус</th>
+        <th>Бал</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <td>{{ student.firstName }}</td>
+        <td>{{ student.lastName }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.status }}</td>
+        <td>{{ student.grade }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,47 +1,54 @@
-// src/app/adminclass5/adminclass5.component.ts
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { StudentService } from '../../student.service';
 import { HttpClientModule } from '@angular/common/http';
-
+import { NgFor, NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-adminclass5',
   templateUrl: './adminclass5.component.html',
   styleUrls: ['./adminclass5.component.css'],
   standalone: true,
-  imports: [ReactiveFormsModule,HttpClientModule],
-  providers: [StudentService]
+  imports: [NgIf, ReactiveFormsModule, HttpClientModule],
 })
 export class Adminclass5Component {
   studentForm: FormGroup;
+  topStudents: any[] = [];
 
-  constructor(private fb: FormBuilder, private studentService: StudentService) {
-    // Иҷод кардани формуляр
+  constructor(
+    private fb: FormBuilder,
+    private studentService: StudentService
+  ) {
     this.studentForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      age: [null, [Validators.required, Validators.min(1)]],
-      grade: ['', Validators.required],
-      status: ['', Validators.required],
-      image: ['', Validators.required]
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      age: ['', [Validators.required, Validators.min(6), Validators.max(18)]],
+      grade: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
+      status: ['', [Validators.required]],
     });
   }
 
-  // Функсия барои илова кардани донишҷӯ
-  addStudent(): void {
+  ngOnInit(): void {
+    // Ба хотир гиред, ки тавсия медиҳем, ки маълумоти навро ба консоли сабт кунед
+    console.log('Top Students in OnInit:', this.studentService.getTopThreeStudents());
+  }
+  // Method to handle form submission
+  onSubmit(): void {
     if (this.studentForm.valid) {
-      console.log('Form Data:', this.studentForm.value);  // Log the form data
-      this.studentService.addStudent(this.studentForm.value).subscribe({
-        next: (student) => {
-          console.log('Донишҷӯ илова шуд:', student);
-        },
-        error: (err) => {
-          console.error('Хатои илова кардан:', err);
-        }
-      });
-    } else {
-      console.log('Форма нодуруст аст');
+      const newStudent = this.studentForm.value;
+      console.log('Form Value:', newStudent);  // Лог кардан барои тафтиш
+  
+      // Илова кардани донишҷӯ ба хидмат
+      this.studentService.addStudent(newStudent);
+  
+      // Намудор кардани донишҷӯҳои беҳтарин
+      this.topStudents = this.studentService.getTopThreeStudents();
+      
+      // Восита барои тасдиқ кардани, ки маълумот дуруст илова шудааст
+      console.log('Top Students:', this.topStudents);
+  
+      // Аз нав холи кардани форма
+      this.studentForm.reset();
     }
   }
   

@@ -11,7 +11,7 @@ table {
   
   /* Стили суроғаҳои таблиса */
   th {
-    background-color: #24068d;
+    background-color: #00bcd4;
     color: white;
     padding: 10px;
     text-align: left;
@@ -58,19 +58,19 @@ table {
   }
   
   .first-place {
-    background-color:#007c91;
+    background-color:#00bcd4;
     order: 1;
     transform: translateY(-30px);
   }
   
   .second-place {
-    background-color: #007c91;
+    background-color: #00bcd4;
     order: 0;
     transform: translateY(10px);
   }
   
   .third-place {
-    background-color: #007c91;
+    background-color: #00bcd4;
     order: 2;
     transform: translateY(10px);
   }

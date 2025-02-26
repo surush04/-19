@@ -94,6 +94,7 @@
   .class-link {
      width: 100%;
       font-size: 1.1rem;
+      height: 120px;
   }
 
   .class-list {
@@ -133,4 +134,50 @@
     height: 50px;
     border-radius: 50%;
     background-color: wheat;
+}
+.oll1{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/* Модалка: Пинҳон кардан */
+.modal {
+  display: none; /* Ҳангоми аввал пинҳон аст */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.4); /* Маъзарат барои фон */
+  padding-top: 60px;
+}
+
+/* Мазмуни модалка */
+.modal-content {
+  background-color: #fff;
+  margin: 5% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/* Понихт кардани хати мепечонак */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+.op{
+  font-size: 10px;
 }

@@ -1,0 +1,82 @@
+.container {
+    background:linear-gradient(to right, #4e4376, #2b5876) ;
+height: 100vh;
+color: white;
+  }
+
+   
+  h3 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 30px;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    font-weight: 600;
+  
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .form-control {
+    padding: 15px;
+    font-size: 16px;
+    border-radius: 12px;
+    border: 1px solid #ddd;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  /* Беҳтар кардани ранг ва эффектҳои фокус */
+  .form-control:focus {
+    border-color: #28a745;
+    box-shadow: 0 0 5px rgba(40, 167, 69, 0.5);
+  }
+  
+  /* Ранги хато */
+  .text-danger {
+    font-size: 14px;
+    margin-top: 0.5rem;
+    color: #dc3545;
+  }
+  
+  /* Стил барои кнопка */
+  button {
+    background-color: #28a745;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 15px;
+    border-radius: 8px;
+    border: none;
+  }
+  
+  button:hover {
+    background-color: #218838;
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Адаптив (Responsive) */
+  @media (max-width: 576px) {
+    .col-md-8 {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  
+    h3 {
+      font-size: 24px;
+    }
+  
+    .form-control {
+      padding: 12px;
+    }
+  
+    button {
+      font-size: 16px;
+    }
+  }

@@ -1,14 +1,54 @@
-<!-- src/app/adminclass5/adminclass5.component.html -->
-<div>
-    <h2>Илова кардани донишҷӯ</h2>
-    <form [formGroup]="studentForm" (ngSubmit)="addStudent()">
-      <input type="text" formControlName="firstName" placeholder="Ном" required />
-      <input type="text" formControlName="lastName" placeholder="Номи хонавода" required />
-      <input type="number" formControlName="age" placeholder="Сол" required />
-      <input type="text" formControlName="grade" placeholder="Нишон" required />
-      <input type="text" formControlName="status" placeholder="Вазъият" required />
-      <input type="text" formControlName="image" placeholder="Суроғаи тасвир" required />
-      <button type="submit" [disabled]="studentForm.invalid">Илова кардан</button>
-    </form>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <h3 class="text-center mb-4 text-primary">Add a New Student</h3>
+        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+          
+          <div class="form-group">
+            <label for="firstName" class="font-weight-bold">First Name</label>
+            <input id="firstName" formControlName="firstName" type="text" class="form-control form-control-lg shadow-sm rounded" />
+            <div *ngIf="studentForm.get('firstName')?.invalid && studentForm.get('firstName')?.touched" class="text-danger">
+              First Name is required.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="lastName" class="font-weight-bold">Last Name</label>
+            <input id="lastName" formControlName="lastName" type="text" class="form-control form-control-lg shadow-sm rounded" />
+            <div *ngIf="studentForm.get('lastName')?.invalid && studentForm.get('lastName')?.touched" class="text-danger">
+              Last Name is required.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="age" class="font-weight-bold">Age</label>
+            <input id="age" formControlName="age" type="number" class="form-control form-control-lg shadow-sm rounded" />
+            <div *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched" class="text-danger">
+              Age must be between 6 and 18.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="grade" class="font-weight-bold">Grade</label>
+            <input id="grade" formControlName="grade" type="number" class="form-control form-control-lg shadow-sm rounded" />
+            <div *ngIf="studentForm.get('grade')?.invalid && studentForm.get('grade')?.touched" class="text-danger">
+              Grade is required and must be between 0 and 100.
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="status" class="font-weight-bold">Status</label>
+            <select id="status" formControlName="status" class="form-control form-control-lg shadow-sm rounded">
+              <option value="active" class="text-success">Active</option>
+              <option value="inactive" class="text-danger">Inactive</option>
+            </select>
+          </div>
+  
+          <button type="submit" class="btn btn-success btn-block btn-lg shadow-sm" [disabled]="studentForm.invalid">
+            Add Student
+          </button>
+        </form>
+      </div>
+    </div>
   </div>
- 
+  

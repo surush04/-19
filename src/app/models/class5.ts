@@ -1,5 +1,9 @@
-export interface Class5 {
+export interface Student {
     id: number;
-    student: string;
+    firstName: string;
+    lastName: string;
     age: number;
-}
+    grade: number;
+    status: string;
+    image: string;
+  }

@@ -1,43 +1,63 @@
-<div class="oll"><br>
  
-  <div *ngIf="students?.length" class="podium">
-    <div class="second-place" *ngIf="getTopThreeStudents()?.[1]">
-      <span class="position"><img class="imgpod" src="" alt=""></span>
-      <p>{{ getTopThreeStudents()[1]?.firstName }} {{ getTopThreeStudents()[1]?.lastName }}</p>
-      <p class="grade">{{ getTopThreeStudents()[1]?.grade }}</p>
-    </div>
-  
-    <div class="first-place" *ngIf="getTopThreeStudents()?.[0]">
-      <span class="position"><img class="imgpod"  src="" alt=""></span>
-      <p>{{ getTopThreeStudents()[0]?.firstName }} {{ getTopThreeStudents()[0]?.lastName }}</p>
-      <p class="grade">{{ getTopThreeStudents()[0]?.grade }}</p>
-    </div>
-  
-    <div class="third-place" *ngIf="getTopThreeStudents()?.[2]">
-      <span class="position"><img class="imgpod" src="" alt=""></span>
-      <p>{{ getTopThreeStudents()[2]?.firstName }} {{ getTopThreeStudents()[2]?.lastName }}</p>
-      <p class="grade">{{ getTopThreeStudents()[2]?.grade }}</p>
-    </div>
-  </div>
-  
-  <table border="1">
-    <thead>
-      <tr>
-        <th>Номи аввал</th>
-        <th>Фамилия</th>
-        <th>Age</th>
-        <th>Статус</th>
-        <th>Бал</th>
+<div class="olll">
+<table>
+  <thead>
+    <tr>
+       
+      <th>Ном</th>
+      <th>Номи Падар</th>
+      <th>Синф</th>
+      <th>Соли таваллуд</th>
+      <th>Хол</th>
+      <th>Хол</th>
+      <th>Хол</th>
+      <th>Хол</th>
+      <th>Хол</th>
+      <th>Статус</th>
+       
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let user of users;let i = index ">
+      <tr *ngIf="+user.classid === 6">
+        
+        <td>{{ user.name }}</td>
+        <td>{{ user.father_name }}</td>
+        <td>{{ user.classid }}</td>
+        <td>{{ user.birth_year }}</td>
+        <td>{{ user.grade1 }}</td>
+        <td>{{ user.grade2 }}</td>
+        <td>{{ user.grade3 }}</td>
+        <td>{{ user.grade4 }}</td>
+        <td>{{ getTotalGrade(user) }}</td>
+        
+    <td>
+  {{ user.status === 1 ? 'Онлайн' : user.status === 2 ? 'Офлайн' : 'Номаълум' }}
+  <ng-container *ngIf="getTotalGrade(user) >= 50 && getTotalGrade(user) < 60">
+    <span>⭐</span>
+  </ng-container>
+  <ng-container *ngIf="getTotalGrade(user) >= 60 && getTotalGrade(user) < 70">
+    <span>⭐⭐</span>
+  </ng-container>
+  <ng-container *ngIf="getTotalGrade(user) >= 70 && getTotalGrade(user) < 85">
+    <span>⭐⭐⭐</span>
+  </ng-container>
+  <ng-container *ngIf="getTotalGrade(user) >= 85 && getTotalGrade(user) < 95">
+    <span>⭐⭐⭐⭐</span>
+  </ng-container>
+  <ng-container *ngIf="getTotalGrade(user) >= 95 && getTotalGrade(user) <= 100">
+    <span>⭐⭐⭐⭐⭐</span>
+  </ng-container>
+</td>
+
+       
       </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let student of students">
-        <td>{{ student.firstName }}</td>
-        <td>{{ student.lastName }}</td>
-        <td>{{ student.age }}</td>
-        <td>{{ student.status }}</td>
-        <td>{{ student.grade }}</td>
-      </tr>
-    </tbody>
-  </table>
+    </ng-container>
+    
+    
+    
+  </tbody>
+</table>
+ 
+
 </div>

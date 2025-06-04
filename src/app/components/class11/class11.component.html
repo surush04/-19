@@ -1,1 +1,63 @@
-<p>class11 works!</p>
+ 
+<div class="olll">
+<table>
+  <thead>
+    <tr>
+       
+      <th>Ном</th>
+      <th>Номи Падар</th>
+      <th>Синф</th>
+      <th>Соли таваллуд</th>
+      <th>Хол</th>
+      <th>Хол</th>
+      <th>Хол</th>
+      <th>Хол</th>
+      <th>Хол</th>
+      <th>Статус</th>
+       
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let user of users;let i = index ">
+      <tr *ngIf="+user.classid === 11">
+        
+        <td>{{ user.name }}</td>
+        <td>{{ user.father_name }}</td>
+        <td>{{ user.classid }}</td>
+        <td>{{ user.birth_year }}</td>
+        <td>{{ user.grade1 }}</td>
+        <td>{{ user.grade2 }}</td>
+        <td>{{ user.grade3 }}</td>
+        <td>{{ user.grade4 }}</td>
+        <td>{{ getTotalGrade(user) }}</td>
+        
+    <td>
+  {{ user.status === 1 ? 'Онлайн' : user.status === 2 ? 'Офлайн' : 'Номаълум' }}
+  <ng-container *ngIf="getTotalGrade(user) >= 50 && getTotalGrade(user) < 60">
+    <span>⭐</span>
+  </ng-container>
+  <ng-container *ngIf="getTotalGrade(user) >= 60 && getTotalGrade(user) < 70">
+    <span>⭐⭐</span>
+  </ng-container>
+  <ng-container *ngIf="getTotalGrade(user) >= 70 && getTotalGrade(user) < 85">
+    <span>⭐⭐⭐</span>
+  </ng-container>
+  <ng-container *ngIf="getTotalGrade(user) >= 85 && getTotalGrade(user) < 95">
+    <span>⭐⭐⭐⭐</span>
+  </ng-container>
+  <ng-container *ngIf="getTotalGrade(user) >= 95 && getTotalGrade(user) <= 100">
+    <span>⭐⭐⭐⭐⭐</span>
+  </ng-container>
+</td>
+
+       
+      </tr>
+    </ng-container>
+    
+    
+    
+  </tbody>
+</table>
+ 
+
+</div>

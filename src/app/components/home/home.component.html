@@ -7,28 +7,53 @@
   </div>
   <div class="home-title" id="openModal">Хабарҳо</div>
   </div>
-
+<br><br>
   <nav class="class-links">
     <div class="class-list">
-      <div><a routerLink="/class5" class="class-link"><div> <img class="imgoll" src
-            alt> &nbsp; <div *ngIf="topStudents.length">
-              <p class="op">{{ topStudents[0]?.firstName }} <br> {{ topStudents[0]?.lastName }}</p>
-            </div>
-            </div> Хонандагони <br> синфи 5</a></div>
-      <div><a routerLink="/class6" class="class-link"><img class="imgoll" src
-            alt> &nbsp;  <div *ngIf="topStudents.length">
-              <p class="op">{{ topStudents[0]?.firstName }} <br> {{ topStudents[0]?.lastName }}</p>
-            </div> Хонандагони <br> синфи 6</a></div>
-      <div><a routerLink="/class7" class="class-link"><img class="imgoll" src
-            alt> &nbsp; Хонандагони <br> синфи 7</a></div>
-      <div><a routerLink="/class8" class="class-link"><img class="imgoll" src
-            alt> &nbsp; Хонандагони <br> синфи 8</a></div>
-      <div><a routerLink="/class9" class="class-link"><img class="imgoll" src
-            alt> &nbsp; Хонандагони <br> синфи 9</a></div>
-      <div><a routerLink="/class10" class="class-link"><img class="imgoll" src
-            alt> &nbsp; Хонандагони <br> синфи 10</a></div>
-      <div><a routerLink="/class11" class="class-link"><img class="imgoll" src
-            alt> &nbsp; Хонандагони <br> синфи 11</a></div>
+    <!-- Синфи 5 -->
+<div>
+  <a routerLink="/class5" class="class-link">
+    <div class="ngg">
+      <h6 *ngIf="topStudentsByClass['5']">{{ topStudentsByClass['5'].name }}</h6>
+    </div>
+    Хонандагони <br> синфи 5
+  </a>
+</div>
+
+<!-- Синфи 6 -->
+<div>
+  <a routerLink="/class6" class="class-link">
+    <div class="ngg">
+      <h6 *ngIf="topStudentsByClass['6']">{{ topStudentsByClass['6'].name }}</h6>
+    </div>
+    Хонандагони <br> синфи 6
+  </a>
+</div>
+
+<!-- Синфи 7 -->
+<div>
+  <a routerLink="/class7" class="class-link">
+    <div class="ngg">
+      <h6 *ngIf="topStudentsByClass['7']">{{ topStudentsByClass['7'].name }}</h6>
+    </div>
+    Хонандагони <br> синфи 7
+  </a>
+</div>
+
+<!-- Ҳамин тавр идома деҳ то 11 -->
+
+      <div><a routerLink="/class8" class="class-link"> <div class="ngg">
+      <h6 *ngIf="topStudentsByClass['8']">{{ topStudentsByClass['8'].name }}</h6>
+    </div> Хонандагони <br> синфи 8</a></div>
+      <div><a routerLink="/class9" class="class-link">  <div class="ngg">
+      <h6 *ngIf="topStudentsByClass['9']">{{ topStudentsByClass['9'].name }}</h6>
+    </div> Хонандагони <br> синфи 9</a></div>
+      <div><a routerLink="/class10" class="class-link">  <div class="ngg">
+      <h6 *ngIf="topStudentsByClass['10']">{{ topStudentsByClass['10'].name }}</h6>
+    </div>Хонандагони <br> синфи 10</a></div>
+      <div><a routerLink="/class11" class="class-link"> <div class="ngg">
+      <h6 *ngIf="topStudentsByClass['11']">{{ topStudentsByClass['11'].name }}</h6>
+    </div> Хонандагони <br> синфи 11</a></div>
       <div><a routerLink="/admin-class5" class="class-link">Admin</a></div>
     </div>
   </nav>

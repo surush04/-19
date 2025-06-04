@@ -1,0 +1,46 @@
+<p>user-list.component works!</p>
+<h2>🗄️ Рӯйхати истифодабарандагони архившуда</h2>
+
+<div *ngIf="loading" class="info-message">Лутфан каме сабр кунед, маълумот бор мешавад...</div>
+<div *ngIf="error" class="error-message">{{ error }}</div>
+
+<table *ngIf="!loading && archivedUsers.length > 0" class="archive-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Ном</th>
+      <th>Номи падар</th>
+      <th>Соли таваллуд</th>
+      <th>Синф</th>
+      <th>Хол 1</th>
+      <th>Хол 2</th>
+      <th>Хол 3</th>
+      <th>Хол 4</th>
+      <th>Статус</th>
+      <th>Архив шуд дар</th>
+      <th>Ҳамагӣ</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of archivedUsers">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.father_name }}</td>
+      <td>{{ user.birth_year }}</td>
+      <td>{{ user.classid }}</td>
+      <td>{{ user.grade1 }}</td>
+      <td>{{ user.grade2 }}</td>
+      <td>{{ user.grade3 }}</td>
+      <td>{{ user.grade4 }}</td>
+      <td>{{ user.status }}</td>
+      <td>{{ user.archived_at | date:'dd.MM.yyyy HH:mm' }}</td>
+      <td>{{ user.grade1 + user.grade2 + user.grade3 + user.grade4 }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && archivedUsers.length === 0" class="no-data-message">
+  <em>Ҳеҷ маълумоти архившуда вуҷуд надорад.</em>
+</div>
+
+<button class="archive-button" (click)="archiveCurrentMonth()">Архиви моҳ</button>

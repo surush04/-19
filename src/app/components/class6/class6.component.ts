@@ -1,44 +1,63 @@
-import { NgFor, NgIf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { StudentService } from '../../student.service';
+import { ApiService, User } from '../../api.service';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgFor, NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-class6',
   templateUrl: './class6.component.html',
   styleUrls: ['./class6.component.css'],
   standalone: true,
-  imports: [NgIf,NgFor]
+  imports: [NgIf,NgFor,ReactiveFormsModule ]
 })
 export class Class6Component implements OnInit {
-  students: any[] = []; // Массиви ёддошти донишҷӯён
-  studentForm: FormGroup;
-
-  constructor(private studentService: StudentService) { // Инжексияи сервис
-    this.studentForm = new FormGroup({
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      age: new FormControl('', [Validators.required, Validators.min(5)]),
-      grade: new FormControl('', Validators.required),
-      status: new FormControl('', Validators.required),
+  users: User[] = [];
+  userForm: FormGroup;
+   
+   
+  constructor(private apiService: ApiService) {
+    // Иҷод кардани форм барои илова кардани истифодабаранда
+    this.userForm = new FormGroup({
+     name: new FormControl(''),
+      father_name: new FormControl(''),
+      birth_year: new FormControl(''),
+      classid: new FormControl(''),
+      grade1: new FormControl(0),
+      grade2: new FormControl(0),
+      grade3: new FormControl(0),
+      grade4: new FormControl(0),
+      status: new FormControl(0),
     });
   }
+archiveCurrentMonth() {
+  if (confirm('Шумо мутмаин ҳастед, ки мехоҳед маълумотҳоро ба архив гузаронед ва холҳоро холӣ кунед?')) {
+    this.apiService.archiveMonth().subscribe({
+      next: (res) => {
+        alert(res.message || 'Маълумот архив шуд ва холҳо холӣ шуданд!');
+        this.loadUsers(); // Ин компоненташро навсозӣ мекунад
+        // 📡 UserListComponentComponent худаш сигналро қабул мекунад
+      },
+      error: (err) => {
+        alert('Хатогӣ: ' + err.message);
+      }
+    });
+  }
+}
+
 
   ngOnInit(): void {
-    // Маълумотро аз сервис гирифта, барои students дар Class5Component истифода мебарем
-    this.students = this.studentService.students;
+    // Дар вақти бор кардани компонент, истифодабарандагонро бор кунем
+    this.loadUsers();
   }
-
-  addStudent(): void {
-    if (this.studentForm.valid) {
-      const newStudent = this.studentForm.value;
-      this.studentService.addStudent(newStudent); // Илова кардани донишҷӯ ба сервис
-      this.students = [...this.studentService.students]; // Воситаи навсозии массив
-      this.studentForm.reset(); // Тоза кардани форма
-    }
-  }
-
-  getTopThreeStudents(): any[] {
-    return this.studentService.getTopThreeStudents(); // Гирифтани 3 донишҷӯи беҳтарин аз сервис
-  }
+getTotalGrade(user: User): number {
+  return (user.grade1 || 0) + (user.grade2 || 0) + (user.grade3 || 0) + (user.grade4 || 0);
+}
+  loadUsers(): void {
+  this.apiService.getUsers().subscribe((data: User[]) => {
+    this.users = data
+      .filter(user => +user.classid === 6)
+      .sort((a, b) => this.getTotalGrade(b) - this.getTotalGrade(a));  // Сартоб аз калон ба хурд
+  });
+}
 }

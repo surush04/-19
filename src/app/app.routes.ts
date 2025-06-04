@@ -9,6 +9,7 @@ import { Class10Component } from './components/class10/class10.component';
 import { Class11Component } from './components/class11/class11.component';
 import { HomeComponent } from './components/home/home.component';
 import { Adminclass5Component } from './adminpanel/adminclass5/adminclass5.component';
+import { UserListComponentComponent } from './components/user-list.component/user-list.component.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },  // Саҳифаи хонаи асосӣ
@@ -20,6 +21,7 @@ export const routes: Routes = [
   { path: 'class9', component: Class9Component },
   { path: 'class10', component: Class10Component },
   { path: 'class11', component: Class11Component },
+  { path: 'UserList', component: UserListComponentComponent },
 
   { path: '**', redirectTo: '' }  // Роути default
 ];

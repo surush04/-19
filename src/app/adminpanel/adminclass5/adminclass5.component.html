@@ -1,54 +1,219 @@
-<div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-8 col-lg-6">
-        <h3 class="text-center mb-4 text-primary">Add a New Student</h3>
-        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
-          
-          <div class="form-group">
-            <label for="firstName" class="font-weight-bold">First Name</label>
-            <input id="firstName" formControlName="firstName" type="text" class="form-control form-control-lg shadow-sm rounded" />
-            <div *ngIf="studentForm.get('firstName')?.invalid && studentForm.get('firstName')?.touched" class="text-danger">
-              First Name is required.
-            </div>
-          </div>
+Таблитса барои намоиши истифодабарандагон
+<table class="user-table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Ном</th>
+      <th>Номи Падар</th>
+      <th>Синф</th>
+      <th>Соли таваллуд</th>
+      <th>Хол1</th>
+      <th>Хол2</th>
+      <th>Хол3</th>
+      <th>Хол4</th>
+      <th>Статус</th>
+      <th>Амалиёт</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container  *ngFor="let user of users; let i = index" class="user-row">
+    <tr *ngIf="+user.classid === 5 "[style.backgroundColor]="'lightblue'"  >
+      <td>{{ i + 1 }}</td>
+  <td>{{ user.name }}</td>
+        <td>{{ user.father_name }}</td>
+        <td>{{ user.classid }}</td>
+        <td>{{ user.birth_year }}</td>
+        <td>{{ user.grade1 }}</td>
+        <td>{{ user.grade2 }}</td>
+        <td>{{ user.grade3 }}</td>
+        <td>{{ user.grade4 }}</td>
+      <td>
+        {{ user.status === 1 ? 'Онлайн' : user.status === 2 ? 'Офлайн' : 'Номаълум' }}
+      </td>
+      <td>
+        <button (click)="deleteUser(user.id)" class="delete-btn">Ҳазф</button>
+            <button (click)="openModal(user)">
+      Навсозӣ
+    </button>
+      </td>
+    </tr>
+    </ng-container>
+    <ng-container *ngFor="let user of users; let i = index" class="user-row">
+    <tr  *ngIf="+user.classid === 6" [style.backgroundColor]="' red'" >
+      <td>{{ i + 1 }}</td>
+  <td>{{ user.name }}</td>
+        <td>{{ user.father_name }}</td>
+        <td>{{ user.classid }}</td>
+        <td>{{ user.birth_year }}</td>
+        <td>{{ user.grade1 }}</td>
+        <td>{{ user.grade2 }}</td>
+        <td>{{ user.grade3 }}</td>
+        <td>{{ user.grade4 }}</td>
+      <td>
+        {{ user.status === 1 ? 'Онлайн' : user.status === 2 ? 'Офлайн' : 'Номаълум' }}
+      </td>
+      <td>
+        <button (click)="deleteUser(user.id)" class="delete-btn">Ҳазф</button>
+            <button (click)="openModal(user)">
+      Навсозӣ
+    </button>
+      </td>
+    </tr>
+    </ng-container>
+    <ng-container *ngFor="let user of users; let i = index" class="user-row">
+    <tr *ngIf="+user.classid === 7" [style.backgroundColor]="' yellow'" >
+      <td>{{ i + 1 }}</td>
+  <td>{{ user.name }}</td>
+        <td>{{ user.father_name }}</td>
+        <td>{{ user.classid }}</td>
+        <td>{{ user.birth_year }}</td>
+        <td>{{ user.grade1 }}</td>
+        <td>{{ user.grade2 }}</td>
+        <td>{{ user.grade3 }}</td>
+        <td>{{ user.grade4 }}</td>
+      <td>
+        {{ user.status === 1 ? 'Онлайн' : user.status === 2 ? 'Офлайн' : 'Номаълум' }}
+      </td>
+      <td>
+        <button (click)="deleteUser(user.id)" class="delete-btn">Ҳазф</button>
+            <button (click)="openModal(user)">
+      Навсозӣ
+    </button>
+      </td>
+    </tr>
+    </ng-container>
+    <ng-container *ngFor="let user of users; let i = index" class="user-row">
+    <tr *ngIf="+user.classid === 8"[style.backgroundColor]="' orange'"  >
+      <td>{{ i + 1 }}</td>
+  <td>{{ user.name }}</td>
+        <td>{{ user.father_name }}</td>
+        <td>{{ user.classid }}</td>
+        <td>{{ user.birth_year }}</td>
+        <td>{{ user.grade1 }}</td>
+        <td>{{ user.grade2 }}</td>
+        <td>{{ user.grade3 }}</td>
+        <td>{{ user.grade4 }}</td>
+      <td>
+        {{ user.status === 1 ? 'Онлайн' : user.status === 2 ? 'Офлайн' : 'Номаълум' }}
+      </td>
+      <td>
+        <button (click)="deleteUser(user.id)" class="delete-btn">Ҳазф</button>
+            <button (click)="openModal(user)">
+      Навсозӣ
+    </button>
+      </td>
+    </tr>
+    </ng-container>
+    <ng-container *ngFor="let user of users; let i = index" class="user-row">
+    <tr *ngIf="+user.classid === 9" [style.backgroundColor]="' pink'"  >
+      <td>{{ i + 1 }}</td>
+  <td>{{ user.name }}</td>
+        <td>{{ user.father_name }}</td>
+        <td>{{ user.classid }}</td>
+        <td>{{ user.birth_year }}</td>
+        <td>{{ user.grade1 }}</td>
+        <td>{{ user.grade2 }}</td>
+        <td>{{ user.grade3 }}</td>
+        <td>{{ user.grade4 }}</td>
+      <td>
+        {{ user.status === 1 ? 'Онлайн' : user.status === 2 ? 'Офлайн' : 'Номаълум' }}
+      </td>
+      <td>
+        <button (click)="deleteUser(user.id)" class="delete-btn">Ҳазф</button>
+            <button (click)="openModal(user)">
+      Навсозӣ
+    </button>
+      </td>
+    </tr>
+    </ng-container>
+    <ng-container *ngFor="let user of users; let i = index" class="user-row">
+    <tr *ngIf="+user.classid === 10" [style.backgroundColor]="' purple'"  >
+      <td>{{ i + 1 }}</td>
+  <td>{{ user.name }}</td>
+        <td>{{ user.father_name }}</td>
+        <td>{{ user.classid }}</td>
+        <td>{{ user.birth_year }}</td>
+        <td>{{ user.grade1 }}</td>
+        <td>{{ user.grade2 }}</td>
+        <td>{{ user.grade3 }}</td>
+        <td>{{ user.grade4 }}</td>
+      <td>
+        {{ user.status === 1 ? 'Онлайн' : user.status === 2 ? 'Офлайн' : 'Номаълум' }}
+      </td>
+      <td>
+        <button (click)="deleteUser(user.id)" class="delete-btn">Ҳазф</button>
+            <button (click)="openModal(user)">
+      Навсозӣ
+    </button>
+      </td>
+    </tr>
+    </ng-container>
+    <ng-container *ngFor="let user of users; let i = index" class="user-row">
+  <tr *ngIf="+user.classid === 11" [style.backgroundColor]="'green'">
+  <td>{{ i + 1 }}</td>
+  <td>{{ user.name }}</td>
+  <td>{{ user.father_name }}</td>
+  <td>{{ user.classid }}</td>
+  <td>{{ user.birth_year }}</td>
+  <td>{{ user.grade1 }}</td>
+  <td>{{ user.grade2 }}</td>
+  <td>{{ user.grade3 }}</td>
+  <td>{{ user.grade4 }}</td>
+  <td>
+    {{ user.status === 1 ? 'Онлайн' : user.status === 2 ? 'Офлайн' : 'Номаълум' }}
+  </td>
+  <td>
+    <button (click)="deleteUser(user.id)" class="delete-btn">Ҳазф</button>
+    <button (click)="openModal(user)">Навсозӣ</button>
+  </td>
+</tr>
+    </ng-container>
+  </tbody>
+</table>
+
+Форм барои илова кардани истифодабаранда
+<form [formGroup]="userForm" (ngSubmit)="addUser()" class="user-form">
+  <input formControlName="name" placeholder="Ном" class="input-field" />
+  <input formControlName="father_name" placeholder="Номи Падар" class="input-field" />
+  <input formControlName="birth_year" type="number" placeholder="Соли таваллуд" class="input-field" />
+  <select formControlName="classid" class="select-field">
+    <option value="5">Синфи 5</option>
+    <option value="6">Синфи 6</option>
+    <option value="7">Синфи 7</option>
+    <option value="8">Синфи 8</option>
+    <option value="9">Синфи 9</option>
+    <option value="10">Синфи 10</option>
+    <option value="11">Синфи 11</option>
+  </select>
   
-          <div class="form-group">
-            <label for="lastName" class="font-weight-bold">Last Name</label>
-            <input id="lastName" formControlName="lastName" type="text" class="form-control form-control-lg shadow-sm rounded" />
-            <div *ngIf="studentForm.get('lastName')?.invalid && studentForm.get('lastName')?.touched" class="text-danger">
-              Last Name is required.
-            </div>
-          </div>
-  
-          <div class="form-group">
-            <label for="age" class="font-weight-bold">Age</label>
-            <input id="age" formControlName="age" type="number" class="form-control form-control-lg shadow-sm rounded" />
-            <div *ngIf="studentForm.get('age')?.invalid && studentForm.get('age')?.touched" class="text-danger">
-              Age must be between 6 and 18.
-            </div>
-          </div>
-  
-          <div class="form-group">
-            <label for="grade" class="font-weight-bold">Grade</label>
-            <input id="grade" formControlName="grade" type="number" class="form-control form-control-lg shadow-sm rounded" />
-            <div *ngIf="studentForm.get('grade')?.invalid && studentForm.get('grade')?.touched" class="text-danger">
-              Grade is required and must be between 0 and 100.
-            </div>
-          </div>
-  
-          <div class="form-group">
-            <label for="status" class="font-weight-bold">Status</label>
-            <select id="status" formControlName="status" class="form-control form-control-lg shadow-sm rounded">
-              <option value="active" class="text-success">Active</option>
-              <option value="inactive" class="text-danger">Inactive</option>
-            </select>
-          </div>
-  
-          <button type="submit" class="btn btn-success btn-block btn-lg shadow-sm" [disabled]="studentForm.invalid">
-            Add Student
-          </button>
-        </form>
-      </div>
-    </div>
+  <input formControlName="grade1" type="number" placeholder="Нишони 1" class="input-field" />
+<input formControlName="grade2" type="number" placeholder="Нишони 2" class="input-field" />
+<input formControlName="grade3" type="number" placeholder="Нишони 3" class="input-field" />
+<input formControlName="grade4" type="number" placeholder="Нишони 4" class="input-field" />
+  <select formControlName="status" class="select-field">
+    <option [value]="1">Онлайн</option>
+    <option [value]="2">Офлайн</option>
+  </select>
+  <button type="submit" class="submit-btn">Илова кардани истифодабаранда</button>
+</form>
+
+
+<!-- Модал барои навсозӣ -->
+<div class="modal-backdrop" *ngIf="isModalOpen" (click)="closeModal()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <input type="text" [value]="selectedUser?.grade1" #grade1Input>
+    <input type="text" [value]="selectedUser?.grade2" #grade2Input>
+    <input type="text" [value]="selectedUser?.grade3" #grade3Input>
+    <input type="text" [value]="selectedUser?.grade4" #grade4Input>
+    
+    <button (click)="updateUser(
+      selectedUser?.id,
+      +grade1Input.value,
+      +grade2Input.value,
+      +grade3Input.value,
+      +grade4Input.value
+    )">Сабт</button>
+    
+    <button (click)="closeModal()" class="close-btn">Бастан</button>
   </div>
-  
+</div>

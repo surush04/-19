@@ -1,55 +1,119 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { StudentService } from '../../student.service';
-import { HttpClientModule } from '@angular/common/http';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ApiService, User } from '../../api.service';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgFor, NgIf } from '@angular/common';
-
 @Component({
   selector: 'app-adminclass5',
   templateUrl: './adminclass5.component.html',
   styleUrls: ['./adminclass5.component.css'],
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, HttpClientModule],
+  imports: [FormsModule, ReactiveFormsModule,NgIf,NgFor],
 })
-export class Adminclass5Component {
-  studentForm: FormGroup;
-  topStudents: any[] = [];
+export class Adminclass5Component implements OnInit{
+  users: User[] = [];
+  userForm: FormGroup;
+ isModalOpen = false;
 
-  constructor(
-    private fb: FormBuilder,
-    private studentService: StudentService
-  ) {
-    this.studentForm = this.fb.group({
-      firstName: ['', [Validators.required]],
-      lastName: ['', [Validators.required]],
-      age: ['', [Validators.required, Validators.min(6), Validators.max(18)]],
-      grade: ['', [Validators.required, Validators.min(0), Validators.max(100)]],
-      status: ['', [Validators.required]],
+selectedUser: any = null;
+
+openModal(user: any): void {
+  this.selectedUser = { ...user }; // Clone so we don’t edit original before saving
+  this.isModalOpen = true;
+}
+
+closeModal(): void {
+  this.isModalOpen = false;
+  this.selectedUser = null;
+}
+  constructor(private apiService: ApiService) {
+    // Иҷод кардани форм барои илова кардани истифодабаранда
+    this.userForm = new FormGroup({
+      name: new FormControl(''),
+      father_name: new FormControl(''),
+      birth_year: new FormControl(''),
+      classid: new FormControl(''),
+      grade1: new FormControl(0),
+      grade2: new FormControl(0),
+      grade3: new FormControl(0),
+      grade4: new FormControl(0),
+      status: new FormControl(0),
     });
+    
   }
 
   ngOnInit(): void {
-    // Ба хотир гиред, ки тавсия медиҳем, ки маълумоти навро ба консоли сабт кунед
-    console.log('Top Students in OnInit:', this.studentService.getTopThreeStudents());
+    // Дар вақти бор кардани компонент, истифодабарандагонро бор кунем
+    this.loadUsers();
   }
-  // Method to handle form submission
-  onSubmit(): void {
-    if (this.studentForm.valid) {
-      const newStudent = this.studentForm.value;
-      console.log('Form Value:', newStudent);  // Лог кардан барои тафтиш
-  
-      // Илова кардани донишҷӯ ба хидмат
-      this.studentService.addStudent(newStudent);
-  
-      // Намудор кардани донишҷӯҳои беҳтарин
-      this.topStudents = this.studentService.getTopThreeStudents();
+
+  loadUsers(): void {
+    this.apiService.getUsers().subscribe((data: User[]) => {
+      this.users = data;
       
-      // Восита барои тасдиқ кардани, ки маълумот дуруст илова шудааст
-      console.log('Top Students:', this.topStudents);
-  
-      // Аз нав холи кардани форма
-      this.studentForm.reset();
+
+    });
+  }
+
+  addUser(): void {
+    const user = this.userForm.value;
+    this.apiService.addUser(user).subscribe(() => {
+      this.loadUsers();
+      this.userForm.reset();
+    });
+  }
+
+updateUser(id: number, grade1: number, grade2: number, grade3: number, grade4: number): void {
+  console.log('Ирсоли маълумот барои навсозӣ:', {
+    id,
+    grade1,
+    grade2,
+    grade3,
+    grade4
+  });
+
+  this.apiService.updateUser(id, grade1, grade2, grade3, grade4).subscribe({
+    next: (response) => {
+      console.log('Навсозӣ бомуваффақият анҷом ёфт:', response);
+      this.loadUsers();
+      this.closeModal();
+    },
+    error: (error) => {
+      console.error('Хатогӣ ҳангоми навсозӣ:', error);
+      alert('Хатогӣ дар вақти навсозии корбар ба амал омад. Лутфан дубора санҷед.');
+    }
+  });
+}
+
+
+  deleteUser(id: number): void {
+    if (confirm('Шумо мутмаин ҳастед, ки мехоҳед ин хонандаро ҳазф кунед?')) {
+      this.apiService.deleteUser(id).subscribe(() => {
+        this.loadUsers();
+      });
     }
   }
-  
+onInputChange(userId: number, gradeIndex: number, value: string): void {
+  const grade = parseFloat(value); // ё parseInt(value)
+  const user = this.users.find(u => u.id === userId);
+  if (user) {
+    switch (gradeIndex) {
+      case 1: user.grade1 = grade; break;
+      case 2: user.grade2 = grade; break;
+      case 3: user.grade3 = grade; break;
+      case 4: user.grade4 = grade; break;
+    }
+  }
+}
+getRowColor(classid: number): string {
+  const colors: Record<number, string> = {
+    5: 'lightblue',
+    6: 'red',
+    7: 'yellow',
+    8: 'orange',
+    9: 'pink',
+    10: 'purple',
+    11: 'green',
+  };
+  return colors[classid] || 'white';
+}
 }

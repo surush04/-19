@@ -14,9 +14,7 @@
   transition: all 0.3s ease-in-out;
 }
 
-.home-container:hover {
-  transform: scale(1.05);
-}
+ 
 
 .home-title {
   font-size: 1rem;
@@ -32,6 +30,7 @@
 .class-links {
   list-style: none;
   padding: 0;
+  height: 1100px;
 }
 
 .class-list {
@@ -45,8 +44,8 @@
 .class-link {
   background-color: #00bcd4;
   color: #fff;
-  width: 300px; /* Дарозии класс */
-  height: 80px; /* Баландии класс */
+  width: 350px; /* Дарозии класс */
+  height: 120px; /* Баландии класс */
   border-radius: 12px;
   text-decoration: none;
   font-size: 1.5rem;
@@ -58,6 +57,7 @@
   align-items: center;
   transition: all 0.3s ease-in-out;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  gap: 10px;
 }
 
 .class-link:hover {
@@ -180,4 +180,13 @@
 }
 .op{
   font-size: 10px;
+}
+.ngg{
+  width:100%;
+  height: 50px;
+  background: linear-gradient(to right, #4e4376, #2b5876);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
 }

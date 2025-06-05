@@ -201,6 +201,7 @@
 <!-- Модал барои навсозӣ -->
 <div class="modal-backdrop" *ngIf="isModalOpen" (click)="closeModal()">
   <div class="modal-content" (click)="$event.stopPropagation()">
+ 
     <input type="text" [value]="selectedUser?.grade1" #grade1Input>
     <input type="text" [value]="selectedUser?.grade2" #grade2Input>
     <input type="text" [value]="selectedUser?.grade3" #grade3Input>
@@ -214,6 +215,6 @@
       +grade4Input.value
     )">Сабт</button>
     
-    <button (click)="closeModal()" class="close-btn">Бастан</button>
+    
   </div>
 </div>

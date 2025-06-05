@@ -60,4 +60,49 @@ getTotalGrade(user: User): number {
       .sort((a, b) => this.getTotalGrade(b) - this.getTotalGrade(a));  // Сартоб аз калон ба хурд
   });
 }
+getStars(user: User): string {
+  const g1 = user.grade1 ?? 0;
+  const g2 = user.grade2 ?? 0;  // null ё undefined бошад, 0 мегузорем
+  const g3 = user.grade3 ?? 0;
+  const g4 = user.grade4 ?? 0;
+  const total = this.getTotalGrade(user);
+
+  // Функсия барои тафсили холӣ будан (null, undefined, 0)
+const isEmpty = (grade: number | null | undefined): boolean => grade == null || grade == 0;
+
+
+  if (g1 > 0 && isEmpty(g2) && isEmpty(g3) && isEmpty(g4)) {
+    if (total >= 25) return '⭐⭐⭐⭐⭐';
+    if (total >= 23) return '⭐⭐⭐⭐';
+    if (total >= 20) return '⭐⭐⭐';
+    if (total >= 18) return '⭐⭐';
+    if (total >= 15) return '⭐';
+  }
+
+  if (g1 > 0 && g2 > 0 && isEmpty(g3) && isEmpty(g4)) {
+    if (total >= 50) return '⭐⭐⭐⭐⭐';
+    if (total >= 47) return '⭐⭐⭐⭐';
+    if (total >= 45) return '⭐⭐⭐';
+    if (total >= 43) return '⭐⭐';
+    if (total >= 40) return '⭐';
+  }
+
+  if (g1 > 0 && g2 > 0 && g3 > 0 && isEmpty(g4)) {
+    if (total >= 75) return '⭐⭐⭐⭐⭐';
+    if (total >= 73) return '⭐⭐⭐⭐';
+    if (total >= 70) return '⭐⭐⭐';
+    if (total >= 68) return '⭐⭐';
+    if (total >= 65) return '⭐';
+  }
+
+  if (g1 > 0 && g2 > 0 && g3 > 0 && g4 > 0) {
+    if (total >= 100) return '⭐⭐⭐⭐⭐';
+    if (total >= 95) return '⭐⭐⭐⭐';
+    if (total >= 90) return '⭐⭐⭐';
+    if (total >= 85) return '⭐⭐';
+    if (total >= 80) return '⭐';
+  }
+
+  return '';
+}
 }

@@ -1,173 +1,135 @@
-/* Стили таблиса */
-
-.olll{
+/* Блоки умумӣ */
+.olll {
   background: linear-gradient(to right, #4e4376, #2b5876);
   color: #fff;
   text-align: center;
   padding: 30px 20px;
   border-radius: 15px;
-  margin: 5px;
+  margin: 5px auto;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
-  height: 1000px;
-  width: 1000px;
+  max-width: 1000px;
+  width: 100%;
+  overflow-x: auto;
 }
 
+/* Таблиса */
 table {
-    width: 95%;
-    border-collapse: collapse; /* Барои якҷоя кардани сарҳадҳо */
-    margin: 20px 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Стили суроғаҳои таблиса */
-  th {
-    background: linear-gradient(to right, #876edf, #4db1f3);
-    color: white;
-    padding: 10px;
-    text-align: left;
-    font-weight: bold;
-  }
-  
-  /* Стили ҳуҷраҳои таблиса */
-  td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #000000;
-  }
-  
-  /* Ҳангоми хати мишр ё хунук шудани хати таблиса */
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+}
 
-  
-  /* Ҳангоми хости хати мишр бо хати ороишии торик */
-  tr {
-    background-color: #00bcd4;
-    border-bottom: 1px solid black;
-  }
-  
-  /* Адаптив барои экранҳои хурд (мобил) */
- 
-  
-  .podium {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 5px;
-    text-align: center;
-    margin-top: 50px;
-    flex-wrap: wrap; /* Барои ҷойгир кардани унсурҳо дар ҳолати экранҳои хурд */
-    color: white;
-  }
-  
-  .first-place, .second-place, .third-place {
-    width: 220px;
-    padding: 10px;
-    border-radius: 10px;
-    background-color: #f0f0f0;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
- 
-   
-  }
-  
-  .first-place {
-    background-color:#00bcd4;
-    order: 1;
-    transform: translateY(-30px);
-  }
-  
-  .second-place {
-    background-color: #00bcd4;
-    order: 0;
-    transform: translateY(10px);
-  }
-  
-  .third-place {
-    background-color: #00bcd4;
-    order: 2;
-    transform: translateY(10px);
-  }
-  
-  .position {
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .grade {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  /* Media queries барои танзими тарҳ дар экранҳои хурд (мобил ва планшет) */
+th {
+  background: linear-gradient(to right, #876edf, #4db1f3);
+  color: white;
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+}
 
-  
-  @media (max-width: 480px) {
-    
-  
-    .first-place, .second-place, .third-place {
-      width: 20%; /* Шудудтар кардани муҳтавои сутун */
-    }
-  }
-  
-  .oll{
-    background:linear-gradient(to right, #4e4376, #2b5876) ;
-height: 100vh;
+td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #000000;
+}
 
-  }
-  .imgpod{
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: wheat;
-  }
+tr {
+  background-color: #00bcd4;
+  border-bottom: 1px solid black;
+}
 
-  .podium {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-    gap: 30px;
-    margin-bottom: 40px;
-    margin-top: 20px;
-  }
-  
+/* Подиум */
+.podium {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 40px auto 20px;
+  color: white;
+}
+
+/* Мақомҳо */
+.place {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  width: 150px;
+  padding: 15px 10px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+  text-align: center;
+  color: white;
+}
+
+.place:hover {
+  transform: translateY(-5px);
+}
+
+.first {
+  background: linear-gradient(to bottom, #ffd700, #ffcc00);
+  height: 180px;
+}
+
+.second {
+  background: linear-gradient(to bottom, #c0c0c0, #b0b0b0);
+  height: 150px;
+}
+
+.third {
+  background: linear-gradient(to bottom, #cd7f32, #b87333);
+  height: 130px;
+}
+
+.medal {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.info {
+  font-size: 16px;
+  color: white;
+}
+
+/* Тасвири медал (акс) */
+.imgpod {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: wheat;
+}
+
+/* Бекграунди умумии саҳифа */
+.oll {
+  background: linear-gradient(to right, #4e4376, #2b5876);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Адаптив барои экранҳои хурд */
+@media (max-width: 600px) {
   .place {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-end;
-    width: 150px;
-    padding: 15px 10px;
-    border-radius: 10px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    transition: transform 0.3s ease;
+    width: 100px;
+    padding: 10px;
   }
-  
-  .place:hover {
-    transform: translateY(-5px);
-  }
-  
-  .first {
-    background: linear-gradient(to bottom, #ffd700, #ffcc00);
-    height: 180px;
-  }
-  
-  .second {
-    background: linear-gradient(to bottom, #c0c0c0, #b0b0b0);
-    height: 150px;
-  }
-  
-  .third {
-    background: linear-gradient(to bottom, #cd7f32, #b87333);
-    height: 130px;
-  }
-  
+
   .medal {
-    font-size: 30px;
-    margin-bottom: 10px;
+    font-size: 24px;
   }
-  
+
   .info {
-    text-align: center;
-    color: white;
-    font-size: 16px;
+    font-size: 14px;
   }
-  
+
+  table, th, td {
+    font-size: 14px;
+  }
+
+  .olll {
+    padding: 20px 10px;
+  }
+}

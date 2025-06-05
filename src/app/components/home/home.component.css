@@ -12,6 +12,7 @@
   margin: 5px;
   box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease-in-out;
+overflow-x: hidden;
 }
 
  
@@ -275,5 +276,47 @@
 
   .modal-buttons button {
     width: 100%;
+  }
+}
+.xat {
+  display: flex;
+   
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  background-color: #00bcd4;
+  text-align: start;
+  text-decoration: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding-left: 20px;
+  color: white;
+  box-sizing: border-box;
+
+  overflow-x: auto;     /* Иҷозат ба скрол */
+  white-space: nowrap;  /* Ҷолиб кардани мазмун дар як хат */
+}
+
+/* Агар лозим бошад, дар мобилӣ шрифти хурдтар */
+@media (max-width: 600px) {
+  .xat {
+    width: 100%;
+    padding-left: 10px;
+    font-size: 0.8rem;
+  display: flex;
+  gap: 20px;
+  }
+}
+@media (max-width: 400px) {
+  .xat {
+     
+    width: 100%;
+    padding-left: 10px;
+    font-size: 0.8rem;
+  display: flex;
+  gap: 20px;
   }
 }

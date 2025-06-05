@@ -30,20 +30,8 @@ export class Class8Component implements OnInit {
       status: new FormControl(0),
     });
   }
-archiveCurrentMonth() {
-  if (confirm('Шумо мутмаин ҳастед, ки мехоҳед маълумотҳоро ба архив гузаронед ва холҳоро холӣ кунед?')) {
-    this.apiService.archiveMonth().subscribe({
-      next: (res) => {
-        alert(res.message || 'Маълумот архив шуд ва холҳо холӣ шуданд!');
-        this.loadUsers(); // Ин компоненташро навсозӣ мекунад
-        // 📡 UserListComponentComponent худаш сигналро қабул мекунад
-      },
-      error: (err) => {
-        alert('Хатогӣ: ' + err.message);
-      }
-    });
-  }
-}
+ 
+ 
 
 
   ngOnInit(): void {

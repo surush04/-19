@@ -45,7 +45,7 @@ updateUser(
   deleteUser(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}/${id}`);
   }
-  archiveMonth(): Observable<any> {
+  archiveMonth(monthNumber: number, year: number ): Observable<any> {
   return this.http.post(`${this.apiUrl}/archive-month`, {});
   
 }

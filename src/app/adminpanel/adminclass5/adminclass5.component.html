@@ -1,4 +1,9 @@
 Таблитса барои намоиши истифодабарандагон
+  <div *ngFor="let month of months" class="month-row">
+     
+    <button (click)="archiveCurrentMonth(month)" class="archive-button">{{month}}</button>
+  </div>
+
 <table class="user-table">
   <thead>
     <tr>

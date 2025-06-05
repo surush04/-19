@@ -2,7 +2,7 @@
 
   <div class="oll1">
 <div class="oll">
-    <img class="img" src="/01J3JDYZAGCB5TBZ57PXAT6BBY.svg" alt>
+    <img (click)="openLoginModal()" class="img" src="/01J3JDYZAGCB5TBZ57PXAT6BBY.svg" alt>
     <h1 class="home-title">Зиғар зодгоҳи <br> маърифат</h1>
   </div>
   <div class="home-title" id="openModal">Хабарҳо</div>
@@ -54,7 +54,27 @@
       <div><a routerLink="/class11" class="class-link"> <div class="ngg">
       <h6 *ngIf="topStudentsByClass['11']">{{ topStudentsByClass['11'].name }}</h6>
     </div> Хонандагони <br> синфи 11</a></div>
-      <div><a routerLink="/admin-class5" class="class-link">Admin</a></div>
+      
+
+<!-- Модал -->
+<div class="modal" *ngIf="showLoginModal">
+  <div class="modal-content">
+    <h3>Логин</h3>
+
+    <input #usernameInput type="text" placeholder="Номи корбар" />
+    <input #passwordInput type="password" placeholder="Парол" />
+
+    <div class="modal-buttons">
+      <button (click)="login(usernameInput.value, passwordInput.value)">Ворид шудан</button>
+      <button (click)="closeLoginModal()">Бастан</button>
+    </div>
+
+    <div *ngIf="showError" style="color:red">Логин ё парол хато аст</div>
+  </div>
+</div>
+
+<router-outlet></router-outlet>
+
     </div>
   </nav>
   

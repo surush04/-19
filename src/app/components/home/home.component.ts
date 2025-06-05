@@ -1,24 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService, User } from '../../api.service';
-import { NgFor, NgIf } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { NgIf } from '@angular/common';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, NgIf, ],
+  imports: [RouterModule, NgIf],
   templateUrl: './home.component.html',
-  styleUrl: './home.component.css'
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
   users: User[] = [];
-  topStudentsByClass: { [key: string]: User } = {}; // Барои нигоҳ доштани беҳтаринҳо
+  topStudentsByClass: { [key: string]: User } = {};
+  showLoginModal = false;
+  showError = false;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
-    this.loadUsers();
+ const isLoggedIn = localStorage.getItem('isLoggedIn');
+  console.log('isLoggedIn:', isLoggedIn);
+  if (isLoggedIn !== 'true') {
+    console.log('Not logged in, redirecting...');
+    this.router.navigate(['/']);
+    return;
   }
+  
+  this.loadUsers();
+}
+
 
   getTotalGrade(user: User): number {
     return (user.grade1 || 0) + (user.grade2 || 0) + (user.grade3 || 0) + (user.grade4 || 0);
@@ -28,7 +39,6 @@ export class HomeComponent {
     this.apiService.getUsers().subscribe((data: User[]) => {
       this.users = data;
 
-      // Барои ҳар синф беҳтарин хонандаро ёфтан
       const classIds = ['5', '6', '7', '8', '9', '10', '11'];
       for (const classId of classIds) {
         const classUsers = this.users.filter(user => user.classid === classId);
@@ -47,8 +57,26 @@ export class HomeComponent {
           this.topStudentsByClass[classId] = topUser;
         }
       }
-
       console.log('Top students by class:', this.topStudentsByClass);
     });
+  }
+
+  openLoginModal() {
+    this.showLoginModal = true;
+    this.showError = false;
+  }
+
+  closeLoginModal() {
+    this.showLoginModal = false;
+  }
+
+  login(username: string, password: string) {
+    if (username === 'admin' && password === '1234') {
+      localStorage.setItem('isLoggedIn', 'true');
+      this.closeLoginModal();
+      this.router.navigate(['/admin-class5']);
+    } else {
+      this.showError = true;
+    }
   }
 }

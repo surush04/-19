@@ -20,7 +20,7 @@ export interface User {
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'http://34:3000/api/users';
+  private apiUrl = 'http://34.68.90.195:3000/api/users';
   refreshNeeded: any;
 
   constructor(private http: HttpClient) { }

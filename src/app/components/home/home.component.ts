@@ -1,21 +1,21 @@
 import { Component } from '@angular/core';
 import { ApiService, User } from '../../api.service';
-import { NgIf } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterModule, NgIf],
+  imports: [RouterModule, NgIf, ],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
   users: User[] = [];
-  topStudentsByClass: { [key: string]: User } = {};
+   
   showLoginModal = false;
   showError = false;
-
+topStudentsByClass: { [classid: number]: User } = {};
   constructor(private apiService: ApiService, private router: Router) {}
 
   ngOnInit(): void {
@@ -35,31 +35,33 @@ export class HomeComponent {
     return (user.grade1 || 0) + (user.grade2 || 0) + (user.grade3 || 0) + (user.grade4 || 0);
   }
 
-  loadUsers(): void {
-    this.apiService.getUsers().subscribe((data: User[]) => {
-      this.users = data;
 
-      const classIds = ['5', '6', '7', '8', '9', '10', '11'];
-      for (const classId of classIds) {
-        const classUsers = this.users.filter(user => user.classid === classId);
-        let topUser: User | null = null;
-        let maxGrade = -1;
-
-        for (const user of classUsers) {
-          const total = this.getTotalGrade(user);
-          if (total > maxGrade) {
-            maxGrade = total;
-            topUser = user;
-          }
-        }
-
-        if (topUser) {
-          this.topStudentsByClass[classId] = topUser;
-        }
-      }
-      console.log('Top students by class:', this.topStudentsByClass);
+loadUsers(): void {
+  this.apiService.getUsers().subscribe((data: User[]) => {
+    const filteredUsers = data.filter(user => {
+      const classId = +user.classid;
+      return classId >= 5 && classId <= 11;
     });
-  }
+
+    const topUsersPerClass = new Map<number, User>();
+
+    filteredUsers.forEach(user => {
+      const classId = +user.classid;
+      const currentTopUser = topUsersPerClass.get(classId);
+
+      if (!currentTopUser || this.getTotalGrade(user) > this.getTotalGrade(currentTopUser)) {
+        topUsersPerClass.set(classId, user);
+      }
+    });
+
+    // Ба объект табдил медиҳем, то дар HTML истифода шавад
+    topUsersPerClass.forEach((user, classId) => {
+      this.topStudentsByClass[classId] = user;
+    });
+  });
+}
+
+
 
   openLoginModal() {
     this.showLoginModal = true;

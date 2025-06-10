@@ -29,7 +29,9 @@ topStudentsByClass: { [classid: number]: User } = {};
   
   this.loadUsers();
 }
-
+ngAfterViewInit(): void {
+  setTimeout(() => this.loadUsers(), 0);
+}
 
   getTotalGrade(user: User): number {
     return (user.grade1 || 0) + (user.grade2 || 0) + (user.grade3 || 0) + (user.grade4 || 0);

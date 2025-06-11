@@ -113,11 +113,12 @@ getPercentageByGradeRangeForMonth(month: string): { red: number; yellow: number;
   }
 
   return {
-    red: (red / total) * 100,
-    yellow: (yellow / total) * 100,
-    green: (green / total) * 100,
+    red: Number(((red / total) * 100).toFixed(2)),
+    yellow: Number(((yellow / total) * 100).toFixed(2)),
+    green: Number(((green / total) * 100).toFixed(2)),
   };
 }
+
 
 
 

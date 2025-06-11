@@ -7,20 +7,27 @@
 
 
 
-    <button (click)="openModal(month)" class="month-button"><div class="graph-bars" *ngIf="month && hasAnyPercentage(month)">
-  <div class="bar" *ngIf="getPercentageByGradeRangeForMonth(month).red > 0">
-    <span class="percentage">{{ getPercentageByGradeRangeForMonth(month).red.toFixed(0) }}%</span>
-    <div class="fill red" [ngStyle]="{ height: getPercentageByGradeRangeForMonth(month).red + '%' }"></div>
+ <button (click)="openModal(month)" class="month-button">
+  <div class="graph-bars" *ngIf="month && hasAnyPercentage(month)">
+    <!-- Захираи натиҷаҳо ба тағйирёбандаи миёнарав -->
+    <ng-container *ngIf="getPercentageByGradeRangeForMonth(month) as percentages">
+      <div class="bar" *ngIf="percentages.red > 0">
+        <span class="percentage">{{ percentages.red.toFixed(1) }}%</span>
+        <div class="fill red" [ngStyle]="{ height: percentages.red + '%' }"></div>
+      </div>
+      <div class="bar" *ngIf="percentages.yellow > 0">
+        <span class="percentage">{{ percentages.yellow.toFixed(1) }}%</span>
+        <div class="fill yellow" [ngStyle]="{ height: percentages.yellow + '%' }"></div>
+      </div>
+      <div class="bar" *ngIf="percentages.green > 0">
+        <span class="percentage">{{ percentages.green.toFixed(1) }}%</span>
+        <div class="fill green" [ngStyle]="{ height: percentages.green + '%' }"></div>
+      </div>
+    </ng-container>
   </div>
-  <div class="bar" *ngIf="getPercentageByGradeRangeForMonth(month).yellow > 0">
-    <span class="percentage">{{ getPercentageByGradeRangeForMonth(month).yellow.toFixed(0) }}%</span>
-    <div class="fill yellow" [ngStyle]="{ height: getPercentageByGradeRangeForMonth(month).yellow + '%' }"></div>
-  </div>
-  <div class="bar" *ngIf="getPercentageByGradeRangeForMonth(month).green > 0">
-    <span class="percentage">{{ getPercentageByGradeRangeForMonth(month).green.toFixed(0) }}%</span>
-    <div class="fill green" [ngStyle]="{ height: getPercentageByGradeRangeForMonth(month).green + '%' }"></div>
-  </div>
-</div> Архиви мохи  {{ month }}</button>
+  Архиви мохи {{ month }}
+</button>
+
     
   </div>
 </div>

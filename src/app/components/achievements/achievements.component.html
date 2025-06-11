@@ -1,1 +1,44 @@
-<p>achievements works!</p>
+<div class="honors-container">
+  <!--  Ифтихорнома - 300+ барои ҳар кас -->
+  <div *ngFor="let user of level300Users" class="level level-gold">
+    <h2>🥇 300 бал</h2>
+    <div class="certificate">
+      <h1>Ифтихорнома</h1>
+      <div class="subtitle">Ба ин тавассути расман дода мешавад</div>
+      <div class="recipient">{{ user.name }} {{ user.father_name }}</div>
+      <div class="reason">
+        Барои дастовардҳои назаррас ва талошҳои бемисл дар давоми 3 моҳ, ки бо гирифтани 300 бал мукофотонида шуд.
+      </div>
+      <div class="signature">
+        <div>Имзо</div>
+        <div>Роҳбар</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🥈 200-299 -->
+  <div class="divider"></div>
+  <div class="level level-silver">
+    <h2>🥈 200 бал</h2>
+    <div class="user-grid">
+      <div *ngFor="let user of level200Users" class="user-card silver">
+        <strong>{{ user.name }} {{ user.father_name }}</strong><br />
+        Синф: {{ user.classid }}<br />
+        Хол: {{ user.totalGrade }}
+      </div>
+    </div>
+  </div>
+
+  <!-- 🥉 100-199 -->
+  <div class="divider"></div>
+  <div class="level level-bronze">
+    <h2>🥉 100 бал</h2>
+    <div class="user-grid">
+      <div *ngFor="let user of level100Users" class="user-card bronze">
+        <strong>{{ user.name }} {{ user.father_name }}</strong><br />
+        Синф: {{ user.classid }}<br />
+        Хол: {{ user.totalGrade }}
+      </div>
+    </div>
+  </div>
+</div>

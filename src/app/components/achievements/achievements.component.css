@@ -1,0 +1,184 @@
+.honors-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(to bottom, #1f1c2c, #928dab);
+  color: #f5f5f5;
+  padding: 30px 10px;
+  min-height: 100vh;
+}
+
+.level {
+  text-align: center;
+  width: 100%;
+}
+
+.level h2 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 15px;
+  justify-content: center;
+}
+
+.user-card {
+  background-color: #2e2e2e;
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  font-size: 13px;
+  font-weight: 500;
+  transition: transform 0.3s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  border-left: 5px solid transparent;
+}
+
+.user-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.gold {
+  border-left-color: #ffd700;
+  background: linear-gradient(145deg, #fff3b0, #f7c948);
+  color: #3d2b00;
+}
+
+.silver {
+  border-left-color: #c0c0c0;
+  background: linear-gradient(145deg, #e0e0e0, #bfbfbf);
+  color: #2c2c2c;
+}
+
+.bronze {
+  border-left-color: #cd7f32;
+  background: linear-gradient(145deg, #e3b497, #cd7f32);
+  color: #3d1f00;
+}
+
+.divider {
+  width: 70%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 2px;
+  margin: 30px auto;
+}
+ .certificate {
+      background: white;
+      border: 8px solid #2c3e50;
+      padding: 40px 60px;
+      width: 700px;
+      max-width: 100%;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+      text-align: center;
+      border-radius: 12px;
+      box-sizing: border-box;
+    }
+    .certificate h1 {
+      font-size: 3rem;
+      margin-bottom: 0;
+      color: #2c3e50;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .certificate .subtitle {
+      font-size: 1.25rem;
+      margin-top: 10px;
+      margin-bottom: 40px;
+      color: #34495e;
+    }
+    .recipient {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #2980b9;
+      word-wrap: break-word;
+    }
+    .reason {
+      font-size: 1.1rem;
+      color: #7f8c8d;
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+    .date {
+      font-size: 1rem;
+      color: #95a5a6;
+    }
+    .signature {
+      margin-top: 60px;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 40px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .signature div {
+      border-top: 2px solid #2c3e50;
+      width: 200px;
+      text-align: center;
+      font-size: 1rem;
+      color: #2c3e50;
+      padding-top: 5px;
+      font-weight: bold;
+      box-sizing: border-box;
+    }
+
+    /* Адаптив барои экранҳои хурдтар */
+    @media (max-width: 768px) {
+      .certificate {
+        padding:20px 30px;
+        width: 90%;
+      }
+      .certificate h1 {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+      }
+      .recipient {
+        font-size: 1.6rem;
+      }
+      .reason {
+        font-size: 1rem;
+      }
+      .signature {
+        padding: 0 20px;
+      }
+      .signature div {
+        width: 45%;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .certificate {
+        padding:10px 15px;
+      }
+      .certificate h1 {
+        font-size: 1.1rem;
+      }
+      .recipient {
+        font-size: 1.2rem;
+      }
+      .reason {
+        font-size: 0.8rem;
+      }
+      .signature {
+        display: flex;
+        gap: 10px;
+      }
+      .signature div {
+        width: 50%;
+      }
+    }

@@ -2,8 +2,26 @@
 <div class="oll">
 <div class="month-buttons">
   <div *ngFor="let month of months" class="month-row">
-    <button (click)="openModal(month)" class="month-button">Намоиши {{ month }}</button>
-    <button (click)="archiveCurrentMonth(month)" class="archive-button">Архив</button>
+
+
+
+
+
+    <button (click)="openModal(month)" class="month-button"><div class="graph-bars" *ngIf="month && hasAnyPercentage(month)">
+  <div class="bar" *ngIf="getPercentageByGradeRangeForMonth(month).red > 0">
+    <span class="percentage">{{ getPercentageByGradeRangeForMonth(month).red.toFixed(0) }}%</span>
+    <div class="fill red" [ngStyle]="{ height: getPercentageByGradeRangeForMonth(month).red + '%' }"></div>
+  </div>
+  <div class="bar" *ngIf="getPercentageByGradeRangeForMonth(month).yellow > 0">
+    <span class="percentage">{{ getPercentageByGradeRangeForMonth(month).yellow.toFixed(0) }}%</span>
+    <div class="fill yellow" [ngStyle]="{ height: getPercentageByGradeRangeForMonth(month).yellow + '%' }"></div>
+  </div>
+  <div class="bar" *ngIf="getPercentageByGradeRangeForMonth(month).green > 0">
+    <span class="percentage">{{ getPercentageByGradeRangeForMonth(month).green.toFixed(0) }}%</span>
+    <div class="fill green" [ngStyle]="{ height: getPercentageByGradeRangeForMonth(month).green + '%' }"></div>
+  </div>
+</div> Архиви мохи  {{ month }}</button>
+    
   </div>
 </div>
 
@@ -42,7 +60,7 @@
           <td>{{ user.grade4 }}</td>
           <td>{{ user.status }}</td>
           <td>{{ user.archived_at | date:'dd.MM.yyyy HH:mm' }}</td>
-          <td>{{ user.grade1 + user.grade2 + user.grade3 + user.grade4 }}</td>
+          <td>{{ getTotalGrade(user) }}</td>
         </tr>
       </tbody>
     </table>

@@ -17,7 +17,7 @@ export class Adminclass5Component implements OnInit{
   loading = false;
   months = [
     'Сентябр', 'Октябр', 'Ноябр', 'Декабр',
-    'Январ', 'Феврал', 'Март', 'Апрел', 'Май','июн'
+    'Январ', 'Феврал', 'Март', 'Апрел', 'Май','июн','июл','август'
   ];
   monthMap: { [key: string]: number } = {
     'Сентябр': 9,
@@ -30,6 +30,8 @@ export class Adminclass5Component implements OnInit{
     'Апрел': 4,
     'Май': 5,
     'июн': 6,
+    'июл': 7,
+    'август': 8,
   };
   selectedMonth: string | null = null;
 selectedUser: any = null;
@@ -63,6 +65,7 @@ closeModal(): void {
   ngOnInit(): void {
     // Дар вақти бор кардани компонент, истифодабарандагонро бор кунем
     this.loadUsers();
+    this.archiveCurrentMonth
   }
 
   loadUsers(): void {

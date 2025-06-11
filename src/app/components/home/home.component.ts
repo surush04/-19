@@ -75,7 +75,7 @@ loadUsers(): void {
   }
 
   login(username: string, password: string) {
-    if (username === 'admin' && password === '1234') {
+    if (username === 'admin' && password === '2004') {
       localStorage.setItem('isLoggedIn', 'true');
       this.closeLoginModal();
       this.router.navigate(['/admin-class5']);

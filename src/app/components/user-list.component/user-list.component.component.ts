@@ -121,7 +121,7 @@ export class UserListComponentComponent implements OnInit, OnDestroy {
     for (const user of users) {
       const totalGrade = this.getTotalGrade(user);
       if (totalGrade <= 40) red++;
-      else if (totalGrade <= 60) yellow++;
+      else if (totalGrade <= 70) yellow++;
       else green++;
     }
 

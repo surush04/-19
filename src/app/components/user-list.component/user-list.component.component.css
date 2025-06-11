@@ -75,14 +75,32 @@
   width: 330px;
   height: 100px;
   padding: 10px 16px;
-  font-size: 16px;
+  
   background-color: #00bcd4;
   color: white;
   border: none;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
-  font-size: 25px;
+  font-size: 20px;
+}
+
+@media (max-width: 600px) {
+  .month-button {
+     
+     width: 300px;
+    
+  }
+}
+
+/* Адаптив барои экранҳои хеле хурд */
+@media (max-width: 400px) {
+  .month-button {
+  width: 280px;
+  
+   
+ 
+  }
 }
 .month-button:hover {
   background-color: #357abd;

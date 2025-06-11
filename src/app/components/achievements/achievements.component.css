@@ -154,14 +154,15 @@
         font-size: 1rem;
       }
       .signature {
-        padding: 0 20px;
+        display: flex;
+        padding: 0 10px;
       }
       .signature div {
         width: 45%;
       }
     }
 
-    @media (max-width: 400px) {
+    @media (max-width: 300px) {
       .certificate {
         padding:10px 15px;
       }

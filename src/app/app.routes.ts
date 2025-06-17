@@ -11,6 +11,7 @@ import { HomeComponent } from './components/home/home.component';
 import { Adminclass5Component } from './adminpanel/adminclass5/adminclass5.component';
 import { UserListComponentComponent } from './components/user-list.component/user-list.component.component';
 import { AchievementsComponent } from './components/achievements/achievements.component';
+import { ZigarComponent } from './components/user-list.component/zigar/zigar.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },  // Саҳифаи хонаи асосӣ
@@ -24,6 +25,7 @@ export const routes: Routes = [
   { path: 'class11', component: Class11Component },
   { path: 'UserList', component: UserListComponentComponent },
   { path: 'Achievements', component: AchievementsComponent },
+  { path: 'Zigar', component: ZigarComponent },
 
   { path: '**', redirectTo: '' }  // Роути default
 ];
